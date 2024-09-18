@@ -123,21 +123,25 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
 
   Widget _buildButton(String text, {bool isClear = false}) {
     return Expanded(
-      child: ElevatedButton(
-        onPressed: () {
-          if (isClear) {
-            _clear();
-          } else if (text == '=') {
-            _calculateResult();
-          } else {
-            _appendText(text);
-          }
-        },
-        style: ElevatedButton.styleFrom(
-          padding: EdgeInsets.all(20.0),
-          textStyle: TextStyle(fontSize: 24.0),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ElevatedButton(
+          onPressed: () {
+            if (isClear) {
+              _clear();
+            } else if (text == '=') {
+              _calculateResult();
+            } else {
+              _appendText(text);
+            }
+          },
+          style: ElevatedButton.styleFrom(
+            shape: CircleBorder(),
+            padding: EdgeInsets.all(24.0),
+            textStyle: TextStyle(fontSize: 24.0),
+          ),
+          child: Text(text),
         ),
-        child: Text(text),
       ),
     );
   }
